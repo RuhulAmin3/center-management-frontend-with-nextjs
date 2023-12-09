@@ -23,7 +23,7 @@ const FormInputField = ({
   validation,
   placeholder,
   required,
-  size,
+  size = "large",
   style,
   value,
   id,

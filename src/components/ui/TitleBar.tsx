@@ -8,7 +8,7 @@ type TitleBarType = {
 const TitleBar = ({ title, children }: TitleBarType) => {
   return (
     <div style={{ padding: "15px 0px" }}>
-      <h3 style={{ marginBottom: "8px" }}>{title}</h3>
+      <h3 style={{ marginBottom: "8px", fontSize: "22px" }}>{title}</h3>
       {children}
     </div>
   );

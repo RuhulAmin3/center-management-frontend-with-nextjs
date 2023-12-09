@@ -5,33 +5,26 @@ import logo from "../../assets/logo.png";
 import Image from "next/image";
 import "../../app/globals.css";
 import sidebarMenu from "@/app/constants/sidebarMenu";
-import { Menu } from "antd";
+import { Breadcrumb, Layout, theme } from "antd";
 
-const Navbar = () => {
-  const [visible, setVisible] = useState(false);
+const { Header, Content, Footer } = Layout;
+
+const Navbar = ({ collapsed }: { collapsed: boolean }) => {
+  const {
+    token: { colorBgContainer },
+  } = theme.useToken();
   return (
-    <nav className="navbar">
-      <Button
-        className="menu"
-        icon={<MenuOutlined />}
-        onClick={() => setVisible(true)}
-      />
-      <Drawer
-        width={300}
-        title="Center Management"
-        placement="left"
-        // onClick={() => setVisible(false)}
-        onClose={() => setVisible(false)}
-        open={visible}
-      >
-        <Menu theme="dark" mode="inline" items={sidebarMenu()}>
-          {/* {styledTopics} */}
-        </Menu>
-      </Drawer>
-      {/* <a href="/">
-        <Image height={25} width={100} src={logo} className="logo" alt="logo" />
-      </a> */}
-    </nav>
+    <Header
+      style={{
+        padding: 0,
+        background: colorBgContainer,
+        position: "fixed",
+        left: collapsed ? 80 : 250,
+        width: "100%",
+        transition: "left 0.3s",
+        marginBottom: "20px",
+      }}
+    ></Header>
   );
 };
 export default Navbar;

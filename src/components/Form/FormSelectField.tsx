@@ -1,39 +1,38 @@
 "use client";
+
 import { Select } from "antd";
-import React from "react";
-import { Controller, useFormContext } from "react-hook-form";
+import { useFormContext, Controller } from "react-hook-form";
 import { inputDefaultStyle } from "@/app/constants/styles";
-type SelectOptionsType = {
+export type SelectOptions = {
   label: string;
   value: string;
 };
 
-type FormSelectFieldType = {
+type SelectFieldProps = {
+  selectOptions: SelectOptions[];
   name: string;
-  id?: string;
-  label?: string;
-  style?: Record<string, string>;
-  value?: string | string[];
-  size: "large" | "small";
-  validation?: Record<string, any>;
+  size?: "large" | "small";
+  value?: string | string[] | undefined;
   placeholder?: string;
+  label?: string;
   required?: boolean;
-  selectOptions: SelectOptionsType[];
+  defaultValue?: SelectOptions;
+  handleChange?: (el: string) => void;
 };
 
 const FormSelectField = ({
   name,
-  label,
-  validation,
-  placeholder,
-  required,
-  size,
-  style,
+  size = "large",
   value,
+  placeholder = "select",
   selectOptions,
-  id,
-}: FormSelectFieldType) => {
+  label,
+  defaultValue,
+  handleChange,
+  required,
+}: SelectFieldProps) => {
   const { control } = useFormContext();
+
   return (
     <>
       <span style={{ marginBottom: "10px", display: "inline-block" }}>
@@ -49,18 +48,17 @@ const FormSelectField = ({
         ) : null}
       </span>
       <Controller
-        name={name}
         control={control}
-        render={({ field }) => (
+        name={name}
+        render={({ field: { value, onChange } }) => (
           <Select
-            size={size}
-            placeholder={placeholder}
-            style={{
-              width: "100%",
-            }}
-            {...field}
+            showSearch
+            onChange={handleChange ? handleChange : onChange}
+            size="large"
             options={selectOptions}
-            value={value ? value : field.value}
+            value={value}
+            style={{ width: "100%", height: "50px" }}
+            placeholder={placeholder}
           />
         )}
       />

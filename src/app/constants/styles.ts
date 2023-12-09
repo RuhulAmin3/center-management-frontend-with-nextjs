@@ -14,7 +14,7 @@ export const defaultHeadingStyles = {
 
 export const inputDefaultStyle = {
   backgroundColor: " #f0f1f3",
-  fontSize: "14px",
+  // fontSize: "14px",
   color: "#111111",
   borderRadius: "4px",
   border: "none",

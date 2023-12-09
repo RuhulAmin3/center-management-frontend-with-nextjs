@@ -19,14 +19,15 @@ const NoticeBoard = ({ children, maxHeight }: PropsType) => {
       <div
         style={{
           maxHeight: maxHeight ? maxHeight : "500px",
-          overflowY: "scroll",
+          overflowY: "auto",
+          height: "100%",
           paddingRight: "20px",
           scrollbarColor: "blue",
           scrollbarWidth: "thin",
         }}
       >
         {[
-          new Array(20).fill(null).map((_, idx) => (
+          new Array(12).fill(null).map((_, idx) => (
             <NoticeBoardItem
               key={idx}
               notice={{

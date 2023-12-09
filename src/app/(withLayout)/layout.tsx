@@ -1,46 +1,57 @@
 "use client";
-import Navbar from "@/components/ui/Navbar";
-import Sidebar from "@/components/ui/Sidebar";
-import {
-  MenuFoldOutlined,
-  MenuUnfoldOutlined,
-  UploadOutlined,
-  UserOutlined,
-  VideoCameraOutlined,
-} from "@ant-design/icons";
-import { Button, Layout, theme } from "antd";
 import React, { useState } from "react";
-const { Header } = Layout;
 
-type MainLayoutProps = {
+import { Layout, theme } from "antd";
+import Sidebar from "@/components/ui/Sidebar";
+import Navbar from "@/components/ui/Navbar";
+
+const { Content, Footer } = Layout;
+
+type PropsType = {
   children: React.ReactNode | React.ReactElement;
 };
 
-const MainLayout = ({ children }: MainLayoutProps) => {
-  // const [collapsed, setCollapsed] = useState(false);
-  // const {
-  //   token: { colorBgContainer },
-  // } = theme.useToken();
+const MainLayout = ({ children }: PropsType) => {
+  const {
+    token: { colorBgContainer },
+  } = theme.useToken();
+  const [collapsed, setCollapsed] = useState(false);
+
   return (
-    <div>
-      <Navbar />
-      {/* <Header style={{ padding: 0, background: colorBgContainer }}>
-        <Button
-          type="text"
-          icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-          onClick={() => setCollapsed(!collapsed)}
+    <Layout style={{}}>
+      <Sidebar collapsed={collapsed} setCollapsed={setCollapsed} />
+      <Layout
+        style={{
+          marginLeft: collapsed ? 80 : 250,
+          transition: "margin-left 0.3s",
+        }}
+      >
+        <Navbar collapsed={collapsed} />
+        <Content
           style={{
-            fontSize: "16px",
-            width: 64,
-            height: 64,
+            minHeight: "85vh",
+            margin: "24px 16px 0",
+            overflow: "initial",
+            marginTop: "80px",
           }}
-        />
-      </Header> */}
-      <Layout>
-        <Sidebar />
-        <Layout.Content style={{ padding: "1rem" }}>{children}</Layout.Content>
+        >
+          {/* <TitleBar title="Admin Dashboard">
+            <CMBreadCrumb items={[]} />
+          </TitleBar> */}
+
+          <div
+            style={{
+              padding: 24,
+            }}
+          >
+            {children}
+          </div>
+        </Content>
+        <Footer style={{ textAlign: "center" }}>
+          Center Management Website ©2023 Created by Ruhul Amin
+        </Footer>
       </Layout>
-    </div>
+    </Layout>
   );
 };
 

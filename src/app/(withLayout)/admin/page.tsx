@@ -1,6 +1,6 @@
 import StudentChart from "@/components/charts/StudentChart";
 import NoticeBoard from "@/components/notice-board/NoticeBoard";
-import TitleBar from "@/components/ui/Actionbar";
+import TitleBar from "@/components/ui/TitleBar";
 import CMBreadCrumb from "@/components/ui/CMBreadCrumb";
 import SmallCard from "@/components/ui/SmallCard";
 import SocialCard from "@/components/ui/SocialCard";

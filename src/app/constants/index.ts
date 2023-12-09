@@ -13,3 +13,26 @@ export const bloodGroup = [
   { label: "AB+", value: "AB+" },
   { label: "AB-", value: "AB-" },
 ];
+
+export const classesOptions = [
+  {
+    label: "Six",
+    value: "six",
+  },
+  {
+    label: "Seven",
+    value: "seven",
+  },
+  {
+    label: "Eight",
+    value: "eight",
+  },
+  {
+    label: "Nine",
+    value: "nine",
+  },
+  {
+    label: "Ten",
+    value: "ten",
+  },
+];
